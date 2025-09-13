@@ -1,5 +1,6 @@
 //en esta clase modelaremos los datos de nuestra API
 import 'dart:convert';
+import 'dart:developer' as d;
 
 import 'package:app_superheroes/data/model/superhero_response.dart';
 import 'package:http/http.dart' as http;
@@ -13,8 +14,10 @@ class Repository {
     if(response.statusCode == 200){
       var decodedJson = jsonDecode(response.body);
       SuperheroResponse respuesta = SuperheroResponse.fromJson(decodedJson);
+      d.log("mostrando el mensaje en :::> $respuesta");
       return respuesta;
     }else{
+      d.log("Entrando al falseeee");
       return null;
     }
   }
